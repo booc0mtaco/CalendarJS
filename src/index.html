@@ -1,0 +1,249 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Serivce Schedule Chart</title>
+    <script type="text/javascript" src="lib/scriptaculous/prototype.js"></script>
+    <script type="text/javascript" src="lib/scriptaculous/effects.js"></script>
+    <script type="text/javascript" src="lib/scriptaculous/controls.js"></script>
+    <script type="text/javascript" src="lib/date/untropy-date.js"></script>
+    <script type="text/javascript" src="lib/deep-clone/deepclone.js"></script> 
+    <script type="text/javascript" src="untropy_calendar.js"></script> 
+    
+    <link rel="stylesheet" type="text/css" href="../explayout.css" />
+    <link rel="stylesheet" type="text/css" href="default-theme.css" />
+    <link rel="stylesheet" type="text/css" href="sample-css.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <style type="text/css">
+    	body {
+    		font-family: "Century Gothic", "Helvetica";
+    	}
+    	h2 {
+    		margin: 0;
+    		padding: 0;
+    	}
+    	iframe {
+	    	border: 0;
+	    	height: 450px;
+	    	border-radius: 2px;
+    	}
+    </style>
+    <script type="text/javascript">
+    var uc = null;
+    var init = function() {
+    
+       // Make the calendar start on a date located in the page field named 'constDate'
+        uc = new Untropy.Calendar('calendar_destination', new Date(Date.parse($('constDate').value)), {"SLOTS_PER_DAY": 5});
+       
+        if (typeof activities != "undefined") {
+            for (var i = 0; i < activities.length; i++) {
+                
+                // Stick activity into the calendar itself
+                var newAct = uc.addActivity(activities[i]);
+                
+                // And add event handler
+                newAct.onActivityClick(showActivityDetails);
+            }
+        }
+       
+        uc.onUpdateCalendar(function() {
+            // This should fire off 
+           var dayArray = this.getCalMonth().getDayList();
+           for (var i = 1; i < dayArray.length; i++) {
+               var testDay = dayArray[i];
+               
+               var stringName = testDay.getDayDate().getMonthName() + " " + testDay.getDayDate().getDate() + ", " + testDay.getDayDate().getFullYear();
+               
+               var startButton = testDay.addButton('Start', "Set the Start Day");
+               Event.observe(startButton, 'click', setDateRecipient.bindAsEventListener(testDay, 'startDate', stringName));
+               
+               var endButton = testDay.addButton("End", "Set the End Day");
+               Event.observe(endButton, 'click', setDateRecipient.bindAsEventListener(testDay, 'endDate', stringName));
+            }
+        });
+        uc.printCalendarFrame();
+       
+    };
+    
+    // handler for when buttons are clicked
+    var setDateRecipient = function(event, name, text) {
+        
+        // set the date of the appropriate input box
+        $(name).value = text;
+        
+    };
+    
+    // handler for when activity chunks are clicked
+    var showActivityDetails = function(event, activity) {
+        
+        // 'this' will contain the actual HTML element day clicked
+        var descString = new String();
+
+        descString = "<iframe src='http://picviewer.untropy.net/" + activity.startDate.getFullYear() + "/" + (1 + activity.startDate.getMonth()) + "/" + activity.startDate.getDate() +"/'></iframe>";
+
+        $('activityDetails').className = '';
+        $('activityDetails').className = activity.getType();
+        
+        $('activityDetails').update(descString);
+    };
+    
+    var myEval = function(codeToEval) {
+	    eval(codeToEval);
+    };
+    
+    </script>
+  </head>
+  <body onload="init()">
+    <div class="body">
+        <div class="tools column">
+          <fieldset class="component" id="details">
+            <legend><h3>Details</h3></legend>
+            <div class="record">
+                <div id="activityDetails" class="invisible">Click an activity to view its details</div>
+                <table style="margin-top: 3em;">
+                <tr><td colspan='2'>Sample button targets</td></tr>
+                <tr>
+                    <td>Start:</td>
+                    <td><input id="startDate" placeholder="This is attached to listeners for the start button" type="text" /></td>
+                </tr>
+                <tr>
+                    <td>End:</td>
+                    <td><input id="endDate" placeholder="This is attached to listeners for the end button" type="text" /></td>
+                </tr>
+                </table>
+            </div>
+          </fieldset>
+          <fieldset class="component" id="legend" style="display: none;">
+            <legend><h3>Legend</h3></legend>
+            <div class="record">
+                <dl>
+                    <dt><span class='button'>&nbsp;[&nbsp;&nbsp;&nbsp;</span>,
+                    <span class='button'>&nbsp;&nbsp;&nbsp;]&nbsp;</span></dt>
+                    <dd>Buttons to <em>start</em> and <em>end</em> the date range for a given date selection, respectively.</dd>
+                    
+                    <dt><span class="gantt01">Tasks</span></dt>
+                    <dd>Type 1 Items (for each person)</dd>
+                    
+                    <dt><span class="gantt02">Category</span></dt>
+                    <dd>Type 2 Items</dd>
+                    
+                    <dt><span class='ukday'>UK Holiday</span></dt>
+                    <dd>UK-Recognised National Holiday</dd>
+                    
+                    <dt><span class='usday'>US Holiday</span></dt>
+                    <dd>US-Recognized National Holiday</dd>
+                </dl>
+            </div>
+          </fieldset>
+                <h3>Source Files</h3>
+                <ul>
+                    <li><a href="calendar.css">Main Calendar CSS File</a></li>
+                    <li><a href="default-theme.css">Theme CSS File</a></li>
+                    <li><a href="untropy_calendar.js">Calendar JS File</a></li>
+                </ul>
+
+          <div class="clear">&#xA0;</div>
+        </div>
+        
+        <div class="cal column">
+          <div class="static component" id="full-cal">
+            <div class="record" id='calendar_destination'>
+                <input id="constDate" value="February 1, 2013" />
+            </div>
+          </div>
+          <div class="clear">&#xA0;</div>
+        </div>
+    </div>
+    <script type="text/javascript">
+/**** Goooooo *****/
+var activities = new Array();
+activities.push({"actId": "act01", 
+                 "actType": "gantt02", 
+                 "description": "Installation of Equipment", 
+                 "startDate": new Date(2011, 3, 9), 
+                 "endDate": new Date(2011, 3, 21)}
+                 );
+activities.push({"actId": "act02", 
+                 "actType": "gantt02", 
+                 "description": "Service 1 Migration", 
+                 "startDate": new Date(2011, 3, 23), 
+                 "endDate": new Date(2011, 3, 28)}
+                 );
+activities.push({"actId": "act05", 
+                 "actType": "gantt01", 
+                 "description": "Service 2 Migration", 
+                 "startDate": new Date(2011, 3, 30), 
+                 "endDate": new Date(2011, 4, 5)}
+                 );
+activities.push({"actId": "act06", 
+                 "actType": "gantt01", 
+                 "description": "Move Server 1", 
+                 "startDate": new Date(2011, 3, 24), 
+                 "endDate": new Date(2011, 3, 26)}
+                 );
+activities.push({"actId": "act07", 
+                 "actType": "gantt01", 
+                 "description": "Move Server 2", 
+                 "startDate": new Date(2011, 4, 8), 
+                 "endDate": new Date(2011, 4, 10)}
+                 );
+activities.push({"actId": "act08", 
+                 "actType": "gantt02", 
+                 "description": "Classical Migration", 
+                 "startDate": new Date(2011, 4, 14), 
+                 "endDate": new Date(2011, 5, 19)}
+                 );
+
+activities.push({"actId": "act20",
+                 "actType": "ukday",
+                 "description": "Summer Bank Holiday",
+                 "startDate": new Date(2011, 5, 4),
+                 "endDate": new Date(2011, 5, 4)}
+                );
+activities.push({"actId": "act21",
+                 "actType": "usday",
+                 "description": "Independence Day",
+                 "startDate": new Date(2011, 6, 4),
+                 "endDate": new Date(2011, 6, 4)}
+                );
+/******************/
+activities.push({
+	actId: 'piccal01',
+	actType: 'hellzyeah',
+	description: 'birthday',
+	startDate: new Date(2013, 1, 15),
+	endDate: new Date(2013, 1, 15)
+});
+activities.push({
+	actId: 'piccal01',
+	actType: 'hellzyeah',
+	description: 'boost',
+	startDate: new Date(2012, 5, 9),
+	endDate: new Date(2012, 5, 9)
+});
+activities.push({
+	actId: 'piccal01',
+	actType: 'hellzyeah',
+	description: 'family photo',
+	startDate: new Date(2009, 5, 7),
+	endDate: new Date(2009, 5, 7)
+});
+activities.push({
+	actId: 'piccal01',
+	actType: 'hellzyeah',
+	description: 'guatemala',
+	startDate: new Date(2012, 5, 19),
+	endDate: new Date(2012, 5, 19)
+});
+activities.push({
+	actId: 'piccal01',
+	actType: 'hellzyeah',
+	description: 'guatemala',
+	startDate: new Date(2012, 5, 24),
+	endDate: new Date(2012, 5, 24)
+});
+</script>
+  </body>
+</html>
+

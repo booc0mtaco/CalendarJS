@@ -1,0 +1,256 @@
+/**
+ * 
+ * Calendar Styles - default theme
+ * Andrew Holloway
+ * 
+ * @brief Stylesheet for the calendar, which defaults to the styles inside the main calendar style sheet.
+ *                
+ * This style sheet can be modified and the settings will override the defaults stored inside the calendar
+ * 
+ **/
+
+@import url(calendar.css);
+
+/********************************************************| Overall Styles */
+div.untropy-calendar div
+{
+    border-color:                   #666;
+}
+
+/* Style for buttons on days */
+span.button
+{
+    border-color:                   #666;
+    background-color:               #fafafa;
+    color:                          #333;
+	display: 						inline-block;
+	padding: 						0.2em;
+	text-align: 					center;
+}
+
+/********************************************************| Calendar Frame Style */
+div.untropy-calendar div.calheader
+{
+    background-color:               #ffffff;
+    border: 						0;
+}
+
+/* title of calendar */
+div.untropy-calendar div.calheader table.headerTable td
+{
+	width: 							25em;
+}
+
+div.untropy-calendar div.calheader table.headerTable td#headerBox
+{
+    font-family:                    "Helvetica Neue", Helvetica, Arial;
+    color:                          #000000;
+}
+
+div.untropy-calendar div.calheader table.headerTable td#rightBtnCell input,
+div.untropy-calendar div.calheader table.headerTable td#leftBtnCell input
+{
+	background: 					-webkit-linear-gradient(bottom, rgba(0,0,0,0.25) 0%, rgba(255,255,255,0.26) 100%);
+	background: 					-moz-linear-gradient(bottom, rgba(0,0,0,0.25) 0%, rgba(255,255,255,0.26) 100%);
+	border-radius:					5px;
+	border:							1px solid #666;
+	box-shadow: 					0px 1px 1px rgba(0, 0, 0, 0.1);
+	color: 							#333;
+	font-weight: 					bold;
+	margin: 						0.2em;
+	text-shadow: 					0 1px 1px #fff;
+	width: 							5em;
+}
+
+div.untropy-calendar div.calheader table.headerTable td#rightBtnCell input:active,
+div.untropy-calendar div.calheader table.headerTable td#leftBtnCell input:active
+{
+	background: 					-webkit-linear-gradient(top, rgba(0,0,0,0.25) 0%, rgba(255,255,255,0.26) 100%);
+	background: 					-moz-linear-gradient(top, rgba(0,0,0,0.25) 0%, rgba(255,255,255,0.26) 100%);
+}
+
+div.untropy-calendar div.calbody
+{
+    border: 						0;
+    border-color:                   #000000;
+}
+
+div.untropy-calendar div.calfooter 
+{
+	display: 						none; /* disable this */
+    border-color:                   #000000;
+    background-color:               #fafafa;
+    color:                          #666;
+}
+
+/********************************************************| Calendar Month Styles */
+div.untropy-calendar table.mCalendar td.cell div.day div.day-title
+{
+	line-height: 2em;
+	padding-left: 0.5em;
+}
+
+div.untropy-calendar table
+{
+	border-collapse:				separate;
+}
+
+div.untropy-calendar table.mCalendar td
+{
+    border-color:                   #ccc;
+}
+
+div.untropy-calendar table.mCalendar td.cell
+{
+    background-color:               #fafafa;
+    height: 						10em;
+}
+
+/* The day labels of the calendar month */
+div.untropy-calendar table.mCalendar td.label
+{
+    background-color:               #fafafa;
+    font-family:                    "Helvetica Neue", Helvetica;
+    font-weight: 					100;
+    font-size: 						12pt;
+}
+
+div.untropy-calendar table.mCalendar td.label div
+{
+	border: 						0;
+}
+
+/* the style of the week numbers along the left */
+div.untropy-calendar table.mCalendar td.weeknumber
+{
+    background-color:               #fafafa;
+    color:                          #666;
+}
+
+/* The Font for the week numbers */
+div.untropy-calendar table.mCalendar td.cell div.weeknumber 
+{
+    font-family:                    "Helvetica Neue", Helvetica;
+    font-weight: 					100;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day
+{
+	font-weight: bold;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.selected
+{
+    background-color:               #C0C0C0;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.today
+{
+    background-color:               rgba(155,48,48,0.85) !important;
+    color: 							white !important;
+}
+
+/* weekend day and non-work day style */
+div.untropy-calendar table.mCalendar td.cell div.non-work 
+{
+	color:							#666;
+	background: 					rgba(145,101,162,0.2);
+}
+
+
+/********************************************************| Hover Styles */
+div.untropy-calendar table.mCalendar td.cell div.day:hover
+{
+    background-color:               rgba(154,184,213,0.66);
+    color:							#1286df;
+    font-weight: 					bold;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day.today:hover 
+{
+    color:                          white;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.non-work:hover
+{
+    color:                          #666;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day:hover span.button
+{
+	display: inline-block;
+	width: 3em;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day:hover span.button:hover
+{
+	background-color: 				#ccc;
+}
+
+/********************************************************|  Event Default Style */
+div.untropy-calendar table.mCalendar td.cell div.day div.event 
+{
+    font-family:                    "Helvetica Neue", Helvetica, sans-serif;
+    font-weight:                    normal;
+    border-color:                   #000000;
+    color:                          #000000;
+}
+
+
+div.untropy-calendar table.mCalendar td.cell div.day div.start
+{
+    border-left-color:              #000000;
+    border-radius: 					6px 0 0 6px;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day div.end
+{
+    border-right-color:             #000000;
+    border-radius: 					0px 6px 6px 0px
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day div.start.end
+{
+	border-radius: 					6px;
+}
+
+/********************************************************| Activity Styles */
+div.untropy-calendar table.mCalendar td.cell div.day  div.gantt01, 
+dt span.gantt01,
+div.gantt01
+{
+    background-color:               #88db88;
+    border-color: 					#4da049;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day div.gantt02,
+dt span.gantt02,
+div.gantt02
+{
+    background-color:               #e6a4a4;
+    border-color:					#ba4545;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day div.ukday,
+dt span.ukday,
+div.ukday
+{
+    background-color:               #FFBB00;
+    border-color: 					#bb9630;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day div.usday,
+dt span.usday,
+div.usday
+{
+    background-color:               #0088FF;
+    border-color: 					#18577f;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day div.hellzyeah,
+dt span.hellzyeah,
+div.hellzyeah
+{
+    background-color:               #88db88;
+    border-color: 					#4da049;
+}

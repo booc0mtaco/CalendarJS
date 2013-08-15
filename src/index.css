@@ -1,0 +1,53 @@
+@charset "UTF-8";
+@media screen {
+	h3, h4, h5, h6 {
+		font-weight: 100;
+	}
+	
+	dd, dt {
+		line-height: 1.5em;
+	}
+	
+	dt span {
+		border: 1px solid black;
+		padding: 0.2em;
+		margin: 0.2em;
+	}
+	
+	fieldset {
+		border-radius: 10px;
+		border: 1px solid #666;
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+		margin-bottom: 1em;
+	}
+	
+	legend {
+		background: white;
+	}
+	
+	#activityDetails {
+		border: 1px solid black;
+		border-radius: 5px;
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+		padding: 0.2em;	
+	}
+	
+	.invisible {
+		display: none !important;
+	}
+	
+	fieldset table {
+		width: 100%;
+	}
+	
+	fieldset table input {
+		width: 90%;
+	}
+}
+@media print {
+	div.tools { display: none; }
+	div.cal { width: auto; }
+	div.cal h2 { display: none; }
+	span.button { display: none !important; }
+	.headerTable input { display: none !important; }
+}

@@ -1,0 +1,352 @@
+/**
+ * 
+ * Calendar Styles
+ * Andrew Holloway
+ * 
+ * @brief Stylesheet for the calendar 
+ * 
+ **/
+
+/*******************************************************| Page Layout (Non-calendar) */
+div.cal
+{
+    width:                  75%;
+    float:                  left;
+}
+
+div.tools
+{
+    width:                  24%;
+    float:                  right;
+}
+
+
+/********************************************************| Generic Styles */
+div.untropy-calendar
+{
+
+    width:                  100%;   /* total width of the calendar container */
+    font-size:              10pt;   /* All Font Sizes are Relative to this font (percentage) */
+    
+    /** These values are set with the calendar setup data **/
+}
+
+div.untropy-calendar table
+{
+
+    font-size:              80%;
+}
+
+div.untropy-calendar div.blank
+{
+
+    display:                none;
+    
+}
+
+div.untropy-calendar div
+{
+
+    border:                 1px solid black;
+
+}
+
+span.button
+{
+    line-height:            100%;
+    margin:                 0.2em;
+    
+    border:                 1px solid #000000;
+    
+    background-color:       #BBBBBB;
+    color:                  #000000;
+    
+    font-weight:            bold;
+    
+    cursor:                 default;
+}
+
+/********************************************************| Calendar Layout */
+/********************************************************| Calendar Header Styles */
+div.untropy-calendar div.calheader
+{
+    text-align:             center;
+    background-color:       #000000;
+}
+
+div.untropy-calendar div.calheader table.headerTable
+{
+    width:                  100%;
+    margin:                 0;
+    padding:                0;
+}
+
+div.untropy-calendar div.calheader table.headerTable td
+{
+    width:                  20em;
+    font-size:              80%;
+}
+
+div.untropy-calendar div.calheader table.headerTable td#headerBox
+{
+    text-align:             center;
+    width:                  auto;
+    
+    font-size:              180%;
+    font-family:            Georgia;
+    
+    color:                  #FFFFFF;
+    
+}
+
+div.untropy-calendar div.calheader table.headerTable td input
+{
+    width:                  30%;
+}
+
+div.untropy-calendar div.calheader table.headerTable td#rightBtnCell input
+{
+    float:                  right;
+    border:                 1px solid #FFFFFF;
+    
+    background-color:       #000000;
+    color:                  #FFFFFF;
+}
+
+div.untropy-calendar div.calheader table.headerTable td#leftBtnCell input
+{
+    float:                  left;
+    border:                 1px solid #FFFFFF;
+    
+    background-color:       #000000;
+    color:                  #FFFFFF;
+}
+
+/********************************************************| Calendar Body Container Style */
+div.untropy-calendar div.calbody
+{
+    border:                 1px solid #000000;
+    overflow: 				auto;
+}
+
+/********************************************************| Calendar Footer Container Style */
+div.untropy-calendar div.calfooter 
+{
+	text-align:             center;
+    border:                 1px solid #000000;
+    background-color:       #000000;
+    color:                  #FFFFFF;
+    
+}
+
+/********************************************************| Calendar Month Table & Contents Styles */
+div.untropy-calendar table.mCalendar
+{
+    width:                  100%;
+    table-layout:           fixed;
+}
+
+div.untropy-calendar table.mCalendar td
+{
+    position:               relative;
+    
+    border:                 1px solid #000000;
+    height:                 3.5em;
+    width:                  6em;
+}
+
+div.untropy-calendar table.mCalendar td.cell
+{
+    position:               relative;
+    
+    background-color:       #666699;
+    vertical-align:         top;
+    width:                  6em;
+    
+    padding:                0;
+}
+
+div.untropy-calendar table.mCalendar td.label
+{
+    background-color:       #9999CC;
+    text-align:             center;
+    font-family:            Georgia;
+}
+
+div.untropy-calendar table.mCalendar td.weeknumber
+{
+    background-color:       #000000;
+    width:                  2em;
+    color:                  #5F5F5F;
+}
+
+div.untropy-calendar table.mCalendar td.cell div 
+{
+    position:               relative;
+    
+    text-align:             left;
+    width:                  100%;
+    height:                 100%;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.weeknumber 
+{
+    border:                 0;
+    font-size:              240%;
+    vertical-align:         top;
+    font-family:            Georgia;
+    
+    text-align:             center;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day
+{
+    position:               relative;
+    
+    border:                 0;
+    font-size:              100%;
+    overflow:               hidden;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.selected
+{
+    background-color:       #CCCCFF;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.today
+ {
+    background-color:       #EEEEFF;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.non-work 
+{
+    color:                  #FFFFFF;
+    z-index:                1000;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day div.day-title 
+{
+    border:                 0;
+    height:                 auto;
+    padding:                0.1em;
+    cursor:                 default;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day:hover
+{
+    
+    background-color:       #CCCCFF;    
+    /* ZIndex Fix for Opera */
+    z-index:                1001;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day span.button
+{
+    
+    display: none;
+
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day:hover span.button
+{
+     display: inline;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.today:hover 
+{
+    background-color:       #9999DD;
+
+}
+
+div.untropy-calendar table.mCalendar td.cell div.non-work:hover 
+{
+    color:                  red;
+    overflow:               hidden;
+}
+
+div.untropy-calendar table.mCalendar td.label div
+ {
+    text-align:             center;
+}
+
+div.untropy-calendar table.mCalendar td.label div.weeknumber 
+{
+    font-size:              160%;
+}
+
+div.untropy-calendar table.mCalendar td.label div.day 
+{
+    font-size:              120%;
+    border:                 0;
+}
+
+/********************************************************| Activity Styles */
+div.untropy-calendar table.mCalendar td.cell div.day div.slot
+{
+    width:                  100%;
+    
+    font-size:              90%;
+    line-height:            1.7em;
+    
+    height:                 1.6em;    
+    margin-bottom:          1px;
+    
+    border:                 1px solid transparent;
+    border-left:            0;
+    border-right:           0;
+    
+    cursor:                 default;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day div.event 
+{
+    font-family:            Arial, Helvetica, sans-serif;
+    font-weight:            bold;
+    
+    vertical-align:         middle;
+    text-align:             center;
+    
+    border:                 1px solid #000000;
+    border-left:            0;
+    border-right:           0;
+    
+    margin-left:            0;
+    margin-right:           0;
+    
+    color:                  #000000;
+    
+    overflow:               hidden;
+    
+    width:                  auto;
+    
+    cursor:                 pointer;
+    white-space:            nowrap;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day div.event:hover
+{
+    vertical-align:         center;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day div.start
+{
+    text-align:             left;
+    
+    border-left:            1px solid #000000;
+    margin-left:            1em;
+    padding-left: 			3px;
+}
+
+div.untropy-calendar table.mCalendar td.cell div.day div.end
+{
+    text-align:             right;
+    border-right:           1px solid #000000;
+    
+    margin-right:           1em;
+    padding-right:			3px;
+}
+
+div.untropy-calendar table.mCalendar td.cells div.day div.half
+{
+    width:                  50%;
+}
