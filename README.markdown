@@ -1,5 +1,5 @@
-Miller Browse
-=============
+CalendarJS
+==========
 
 #### Build large format calendars in JavaScript ####
 
